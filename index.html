@@ -78,7 +78,6 @@
             transition: all 0.3s ease;
             font-size: 0.9rem;
             box-shadow: 0 4px 8px rgba(0,0,0,0.03);
-            white-space: nowrap;
         }
         .btn-outline {
             background: transparent;
@@ -99,8 +98,6 @@
             .btn {
                 padding: 0.6rem 1.2rem;
                 font-size: 0.85rem;
-                white-space: normal;
-                text-align: center;
             }
         }
 
@@ -149,7 +146,7 @@
             }
         }
 
-        /* ========== REDESIGNED MOBILE-FIRST TOP BAR - CLEAN & BEAUTIFUL ========== */
+        /* ========== NAVBAR STYLES ========== */
         .navbar {
             background: #FFFFFF;
             position: sticky;
@@ -169,7 +166,6 @@
             margin: 0 auto;
         }
 
-        /* Logo styling - elegant gradient */
         .logo a {
             font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
@@ -180,10 +176,9 @@
             -webkit-background-clip: text;
             color: transparent;
             letter-spacing: -0.3px;
-            transition: opacity 0.2s;
         }
 
-        /* Mobile menu button - modern circular design */
+        /* Mobile menu button - only visible on mobile */
         .mobile-menu-btn {
             display: none;
             background: #FFF4ED;
@@ -194,15 +189,9 @@
             font-size: 1.3rem;
             color: #C4737C;
             cursor: pointer;
-            transition: all 0.2s ease;
-            box-shadow: 0 2px 8px rgba(196, 115, 124, 0.1);
             align-items: center;
             justify-content: center;
-        }
-
-        .mobile-menu-btn:hover {
-            background: #F2D7EE;
-            transform: scale(1.02);
+            box-shadow: 0 2px 8px rgba(196, 115, 124, 0.1);
         }
 
         /* Desktop navigation */
@@ -242,7 +231,12 @@
             color: #C4737C;
         }
 
-        /* Mobile styles - completely redesigned for better look */
+        /* Close button - hidden by default, only shown in mobile menu when open */
+        .close-menu-btn {
+            display: none;
+        }
+
+        /* Mobile styles */
         @media (max-width: 820px) {
             .mobile-menu-btn {
                 display: flex;
@@ -289,8 +283,9 @@
                 padding-left: 2.2rem;
             }
 
-            /* Close button inside mobile menu */
+            /* Close button - now only appears when mobile menu is active via JS */
             .close-menu-btn {
+                display: flex;
                 position: absolute;
                 top: 1rem;
                 right: 1.2rem;
@@ -302,7 +297,6 @@
                 font-size: 1.2rem;
                 color: #C4737C;
                 cursor: pointer;
-                display: flex;
                 align-items: center;
                 justify-content: center;
                 transition: all 0.2s;
