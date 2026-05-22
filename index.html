@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Sidra Liaqat | CS Student & Developer Portfolio</title>
+    <!-- Google Fonts for modern typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (free icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #FDF8F5;
+            font-family: 'Inter', sans-serif;
+            color: #2B2B2B;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.8rem;
+        }
+
+        h1, h2, h3, .logo {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: #C4737C;
+            border-radius: 4px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: #C4737C;
+            color: white;
+            padding: 0.75rem 1.8rem;
+            border-radius: 40px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.03);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #C4737C;
+            color: #C4737C;
+        }
+        .btn-outline:hover {
+            background: #C4737C;
+            color: white;
+            transform: translateY(-3px);
+        }
+        .btn:hover {
+            background-color: #b15d66;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(196,115,124,0.25);
+        }
+
+        .card {
+            background-color: #FFF4ED;
+            border-radius: 28px;
+            padding: 1.5rem;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.04);
+            transition: all 0.25s ease;
+            height: 100%;
+            border: 1px solid rgba(196,115,124,0.15);
+        }
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.12);
+            border-color: #C4737C40;
+        }
+
+        .badge {
+            background-color: #F2D7EE;
+            color: #5D3A5C;
+            padding: 0.3rem 0.9rem;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-chip {
+            background-color: #F2D7EE;
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: 0.2s;
+            color: #2B2B2B;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        .navbar {
+            padding: 1.2rem 0;
+            background-color: rgba(253, 248, 245, 0.92);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(196,115,124,0.2);
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .logo a {
+            font-size: 1.7rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: #C4737C;
+            letter-spacing: -0.5px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #2B2B2B;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover {
+            color: #C4737C;
+        }
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .nav-links {
+                gap: 1.2rem;
+                justify-content: center;
+            }
+            h2 { font-size: 1.8rem; }
+        }
+
+        .hero {
+            padding: 4rem 0 2rem 0;
+        }
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+        .hero h1 {
+            font-size: 3.2rem;
+            color: #2B2B2B;
+        }
+        .typed-text {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: #C4737C;
+            min-height: 70px;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+        .about-text {
+            font-size: 1.05rem;
+            max-width: 800px;
+        }
+
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        .skill-category {
+            background: #FFF4ED;
+            border-radius: 28px;
+            padding: 1.3rem;
+            flex: 1 1 220px;
+            border: 1px solid #f0e2d9;
+        }
+        .skill-category h3 {
+            margin-bottom: 1rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            color: #C4737C;
+        }
+        .skill-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+            gap: 2rem;
+        }
+        .project-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #C4737C;
+        }
+        .project-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .project-tags {
+            margin: 0.8rem 0;
+        }
+
+        .exp-item, .edu-item {
+            background: #FFF4ED;
+            border-radius: 20px;
+            padding: 1.2rem 1.5rem;
+            margin-bottom: 1rem;
+            transition: 0.2s;
+            border: 1px solid #f5e6dd;
+        }
+        .exp-title, .edu-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+        .year-badge {
+            font-size: 0.75rem;
+            font-weight: 600;
+            background: #F2D7EE;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            color: #5D3A5C;
+        }
+
+        /* Certification list - clean, organized card style */
+        .certifications-wrapper {
+            background: #FFF4ED;
+            border-radius: 28px;
+            padding: 1.8rem;
+            border: 1px solid #f0e2d9;
+            margin-top: 1rem;
+        }
+        .cert-grid-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+        .cert-list-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(196,115,124,0.05);
+            padding: 0.75rem 1rem;
+            border-radius: 60px;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .cert-list-item i {
+            width: 28px;
+            color: #C4737C;
+            font-size: 1.1rem;
+        }
+        .cert-list-item:hover {
+            background: #F2D7EE;
+            transform: translateX(4px);
+        }
+        .lang-chip-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .contact-info-panel {
+            background: #FFF4ED;
+            border-radius: 32px;
+            padding: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 1.5rem;
+            border: 1px solid #f0e2d9;
+        }
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .contact-detail i {
+            width: 32px;
+            color: #C4737C;
+            font-size: 1.2rem;
+        }
+        .contact-card {
+            flex: 1;
+            min-width: 200px;
+        }
+        .social-links a {
+            margin-right: 1rem;
+            color: #C4737C;
+            font-size: 1.3rem;
+            transition: 0.2s;
+        }
+        footer {
+            background: #FFF4ED;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+            font-size: 0.85rem;
+            border-top: 1px solid #f0e2d9;
+        }
+        hr {
+            margin: 1rem 0;
+            border-color: rgba(196,115,124,0.2);
+        }
+        @media (max-width: 800px) {
+            .contact-info-panel { flex-direction: column; }
+            .cert-grid-list { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="container nav-container">
+        <div class="logo"><a href="#">Sidraa<span style="color:#C4737C;"></span></a></div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#experience">Experience</a>
+            <a href="#certifications">Certifications</a>
+            <a href="#education">Education</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<main>
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <h1>Sidra Liaqat</h1>
+            <div class="typed-text" id="typedText"></div>
+            <p class="about-text">Computer Science student passionate about AI, UI/UX, web and app development. Building innovative solutions from compilers to robotics — turning ideas into clean code.</p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn"><i class="fas fa-code-branch"></i> View Projects</a>
+                <a href="#contact" class="btn btn-outline"><i class="fas fa-paper-plane"></i> Get in touch</a>
+            </div>
+            <div class="social-links">
+                <a href="https://github.com/sidraliaqat" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/sidraliaqat/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="card" style="padding:2rem;">
+                <p class="about-text">Computer Science student at Fatima Jinnah Women University with strong foundations in web development, machine learning, artificial intelligence, compiler construction, and data analytics. Proficient in C, C++, Java, Python, PHP, MySQL, HTML, CSS, Assembly Language, and Verilog, with hands-on experience in academic and project-based development across AI, robotics, data analytics, and system-level programming. Passionate about solving real-world problems and building innovative, efficient technical solutions.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category"><h3><i class="fas fa-code"></i> Programming</h3><div class="skill-chips"><span class="skill-chip">C/C++</span><span class="skill-chip">Java</span><span class="skill-chip">Python</span><span class="skill-chip">SQL</span><span class="skill-chip">Assembly</span></div></div>
+                <div class="skill-category"><h3><i class="fas fa-laptop-code"></i> Web & App</h3><div class="skill-chips"><span class="skill-chip">HTML/CSS</span><span class="skill-chip">PHP</span><span class="skill-chip">React Native</span><span class="skill-chip">JavaScript</span></div></div>
+                <div class="skill-category"><h3><i class="fas fa-microchip"></i> AI/Embedded</h3><div class="skill-chips"><span class="skill-chip">Machine Learning</span><span class="skill-chip">Data Analysis</span><span class="skill-chip">Verilog</span><span class="skill-chip">8051</span><span class="skill-chip">Robotics</span></div></div>
+                <div class="skill-category"><h3><i class="fas fa-database"></i> Tools & DB</h3><div class="skill-chips"><span class="skill-chip">MySQL</span><span class="skill-chip">GitHub</span><span class="skill-chip">VS Code</span><span class="skill-chip">XAMPP</span><span class="skill-chip">Packet Tracer</span><span class="skill-chip">Canva/PS</span></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid" id="projectsGrid"></div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="container">
+            <h2>Experience & Leadership</h2>
+            <div class="exp-item">
+                <div class="exp-title"><span><i class="fas fa-users" style="color:#C4737C; margin-right: 8px;"></i> Vice President – Scholar Bridge Society</span> <span class="year-badge">Apr 2026 - Present</span></div>
+                <div class="exp-sub">Led teams, organized seminars & technical events, fostered leadership and community engagement.</div>
+            </div>
+            <div class="exp-item">
+                <div class="exp-title"><span><i class="fas fa-chalkboard-user"></i> Campus Ambassador – Military College of Signals, NUST</span> <span class="year-badge">Jan  2026 - Present</span></div>
+                <div class="exp-sub">Coordinated outreach, workshops, and student engagement programs.</div>
+            </div>
+            <div class="exp-item">
+                <div class="exp-title"><span><i class="fas fa-robot"></i> AI & STEAM Fellow – Women Ascension</span> <span class="year-badge">Feb 2026 - May 2026</span></div>
+                <div class="exp-sub">AI innovation program, STEAM workshops, and community-driven projects.</div>
+            </div>
+            <div class="exp-item">
+                <div class="exp-title"><span><i class="fas fa-microphone-alt"></i> Ambassador – Artificial Intelligence Community of Pakistan (AICP)</span> <span class="year-badge">Dec 2024 - Dec 2025</span></div>
+                <div class="exp-sub">Promoted AI initiatives, organized learning circles and networking events.</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications">
+        <div class="container">
+            <h2>Certifications & Achievements</h2>
+            <div class="certifications-wrapper">
+                <div class="cert-grid-list">
+                    <div class="cert-list-item"><i class="fas fa-magic"></i> AI-Powered Design with Google Stitch – DataCrumbs</div>
+                    <div class="cert-list-item"><i class="fas fa-paintbrush"></i> Creative Canva Workshop – Women Ascension</div>
+                    <div class="cert-list-item"><i class="fab fa-linkedin"></i> LinkedIn Mastery & COMPPEC Session – Scholar Bridge Society</div>
+                    <div class="cert-list-item"><i class="fas fa-chart-line"></i> Career Accelerator Certificate – AICP</div>
+                    <div class="cert-list-item"><i class="fas fa-brain"></i> AI & STEAM Fellowship – Women Ascension</div>
+                    <div class="cert-list-item"><i class="fas fa-tasks"></i> Project Management Tracker (Google Sheets) – Coursera</div>
+                    <div class="cert-list-item"><i class="fas fa-female"></i> Tech Spaces Women Should Own – Google Developer Groups</div>
+                    <div class="cert-list-item"><i class="fas fa-chart-simple"></i> Network Marketing Business – Power Eagles</div>
+                    <div class="cert-list-item"><i class="fas fa-hand-holding-heart"></i> World Leprosy Day Awareness Session – Strategic Youth Paradigm</div>
+                </div>
+            </div>
+            <div style="margin-top: 2rem;">
+                <h3 style="font-family: 'Playfair Display'; font-size: 1.5rem; margin-bottom: 1rem;"><i class="fas fa-language"></i> Languages</h3>
+                <div class="lang-chip-group">
+                    <span class="skill-chip"><i class="fas fa-flag-usa"></i> English (Fluent)</span>
+                    <span class="skill-chip"><i class="fas fa-flag"></i> Urdu (Native)</span>
+                    <span class="skill-chip"><i class="fas fa-flag"></i> Punjabi (Native)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="container">
+            <h2>Education</h2>
+            <div class="edu-item">
+                <div class="edu-title"><span><i class="fas fa-graduation-cap" style="margin-right: 8px;"></i> Bachelor of Computer Science (BCS)</span> <span class="year-badge">2023 – 2027</span></div>
+                <div class="edu-sub">Fatima Jinnah Women University, Rawalpindi </div>
+            </div>
+            <div class="edu-item">
+                <div class="edu-title"><span><i class="fas fa-book-open" style="margin-right: 8px;"></i> Intermediate (ICS - Computer Science)</span> <span class="year-badge">2020 – 2022</span></div>
+                <div class="edu-sub">FG Postgraduate College, Wah Cantt | Grade: A+</div>
+            </div>
+            <div class="edu-item">
+                <div class="edu-title"><span><i class="fas fa-school" style="margin-right: 8px;"></i> Matriculation (Science)</span> <span class="year-badge">2018 – 2020</span></div>
+                <div class="edu-sub">Sir Syed College Campus-1, Wah Cantt | Grade: A</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Let's Connect</h2>
+            <div class="contact-info-panel">
+                <div class="contact-card">
+                    <div class="contact-detail"><i class="fas fa-user-circle"></i> <span><strong>Sidra Liaqat</strong></span></div>
+                    <div class="contact-detail"><i class="fas fa-envelope"></i> <span>sidraliaqat204@gmail.com</span></div>
+                    <div class="contact-detail"><i class="fas fa-map-marker-alt"></i> <span>Wah Cantt, Pakistan</span></div>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-detail"><i class="fab fa-github"></i> <span>github.com/sidraliaqat</span></div>
+                    <div class="contact-detail"><i class="fab fa-linkedin"></i> <span>linkedin.com/in/sidraliaqat</span></div>
+                </div>
+                <div class="contact-card">
+                    <div class="social-links">
+                        <a href="https://github.com/sidraliaqat" target="_blank"><i class="fab fa-github fa-lg"></i></a>
+                        <a href="https://linkedin.com/in/sidraliaqat/" target="_blank"><i class="fab fa-linkedin fa-lg"></i></a>
+                        <a href="mailto:sidraliaqat204@gmail.com"><i class="fas fa-envelope fa-lg"></i></a>
+                    </div>
+                    <hr>
+                    <p style="font-size:0.9rem">Open for collaborations, tech talks — let's build something meaningful!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>©Sidra Liaqat<i class="fas fa-heart" style="color:#C4737C"></i> | CS Student & Developer</p>
+</footer>
+
+<script>
+    const projects = [
+        { title: "Line Following Robot", desc: "Autonomous sensor-based robot using embedded systems and IR sensors.", tags: ["Robotics", "Embedded"], icon: "fa-robot" },
+        { title: "S++ Compiler", desc: "Custom compiler with lexical & syntax analysis (Compiler Construction).", tags: ["C++", "Lex", "Compilers"], icon: "fa-code" },
+        { title: "Food Price & Inflation Prediction", desc: "ML-driven data analysis & price forecasting model.", tags: ["Python", "ML", "Data Analytics"], icon: "fa-chart-line" },
+        { title: "Save2Serve – Food Recipe & Expiry Suggester", desc: "Recipe & expiry recommendation app for smart kitchen.", tags: ["React Native", "Web"], icon: "fa-utensils" },
+        { title: "4-Floor Elevator Controller", desc: "Verilog elevator control with FSM design.", tags: ["Verilog", "Digital Design"], icon: "fa-building" },
+        { title: "SidraayyyAura Social App", desc: "Social networking web application with interactive feed.", tags: ["PHP", "Web Dev"], icon: "fa-globe" },
+        { title: "SidraayyyManager", desc: "Full-stack project management system for teams.", tags: ["PHP", "MySQL", "Full Stack"], icon: "fa-clipboard-list" },
+        { title: "Serial Password Access System", desc: "8051 microcontroller security system using assembly.", tags: ["Assembly", "8051"], icon: "fa-lock" },
+        { title: "Online Doctor Appointment System", desc: "Web-based booking & management platform.", tags: ["PHP", "MySQL"], icon: "fa-calendar-check" },
+        { title: "Rain & Fire Sensor Alarm", desc: "Environmental alert system using sensors.", tags: ["Embedded", "IoT"], icon: "fa-bell" },
+        { title: "Online Food Ordering System", desc: "Java-based database system for restaurant orders.", tags: ["Java", "Database"], icon: "fa-pizza-slice" },
+        { title: "Weather Application", desc: "Real-time weather info using APIs.", tags: ["JavaScript", "API"], icon: "fa-cloud-sun" },
+        { title: "Smile Detector", desc: "AI face detection system using OpenCV.", tags: ["Python", "OpenCV", "AI"], icon: "fa-face-smile" },
+        { title: "Voice Controlled Contact Manager", desc: "Speech-based contact management system.", tags: ["Python", "Speech Recognition"], icon: "fa-microphone" },
+        { title: "Electricity Bill Generator", desc: "Automated billing and calculation system.", tags: ["C++", "Desktop"], icon: "fa-file-invoice-dollar" },
+        { title: "Phone Directory System", desc: "C++ contact management tool.", tags: ["C++", "Data Structures"], icon: "fa-address-book" },
+        { title: "Tic Tac Toe Game", desc: "Simple Python game with interactive console UI.", tags: ["Python", "Game"], icon: "fa-gamepad" }
+    ];
+
+    function renderProjects() {
+        const grid = document.getElementById('projectsGrid');
+        if(!grid) return;
+        grid.innerHTML = projects.map(proj => `
+            <div class="card">
+                <div class="project-icon"><i class="fas ${proj.icon} fa-2x"></i></div>
+                <h3 class="project-title">${proj.title}</h3>
+                <p style="font-size:0.9rem; margin: 0.5rem 0;">${proj.desc}</p>
+                <div class="project-tags">${proj.tags.map(t => `<span class="badge">${t}</span>`).join('')}</div>
+            </div>
+        `).join('');
+    }
+    renderProjects();
+
+    const titles = ["Computer Science Student", "Web Developer", "Tech Enthusiast", "Problem Solver", "Programmer"];
+    let idx = 0, charIdx = 0, isDeleting = false;
+    const typedEl = document.getElementById('typedText');
+    function typeEffect() {
+        const current = titles[idx];
+        if(isDeleting) {
+            typedEl.textContent = current.substring(0, charIdx-1);
+            charIdx--;
+        } else {
+            typedEl.textContent = current.substring(0, charIdx+1);
+            charIdx++;
+        }
+        if(!isDeleting && charIdx === current.length) {
+            isDeleting = true;
+            setTimeout(typeEffect, 2000);
+            return;
+        }
+        if(isDeleting && charIdx === 0) {
+            isDeleting = false;
+            idx = (idx+1) % titles.length;
+            setTimeout(typeEffect, 300);
+            return;
+        }
+        const speed = isDeleting ? 50 : 100;
+        setTimeout(typeEffect, speed);
+    }
+    typeEffect();
+
+    document.querySelectorAll('.nav-links a, .hero-buttons a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if(href && href.startsWith('#')) {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if(target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+</script>
+</body>
+</html>
