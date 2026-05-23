@@ -109,6 +109,8 @@
             transition: all 0.25s ease;
             height: 100%;
             border: 1px solid rgba(196,115,124,0.15);
+            display: flex;
+            flex-direction: column;
         }
         .card:hover {
             transform: translateY(-5px);
@@ -178,7 +180,7 @@
             letter-spacing: -0.3px;
         }
 
-        /* Mobile menu button - only visible on mobile */
+        /* Mobile menu button */
         .mobile-menu-btn {
             display: none;
             background: #FFF4ED;
@@ -194,7 +196,6 @@
             box-shadow: 0 2px 8px rgba(196, 115, 124, 0.1);
         }
 
-        /* Desktop navigation */
         .nav-links {
             display: flex;
             gap: 2rem;
@@ -231,17 +232,14 @@
             color: #C4737C;
         }
 
-        /* Close button - hidden by default, only shown in mobile menu when open */
         .close-menu-btn {
             display: none;
         }
 
-        /* Mobile styles */
         @media (max-width: 820px) {
             .mobile-menu-btn {
                 display: flex;
             }
-
             .nav-links {
                 position: fixed;
                 top: 0;
@@ -259,11 +257,9 @@
                 border-left: 1px solid rgba(196, 115, 124, 0.15);
                 overflow-y: auto;
             }
-
             .nav-links.active {
                 right: 0;
             }
-
             .nav-links a {
                 width: 100%;
                 padding: 1rem 1.8rem;
@@ -272,18 +268,14 @@
                 border-bottom: 1px solid rgba(196, 115, 124, 0.08);
                 color: #2B2B2B;
             }
-
             .nav-links a:after {
                 display: none;
             }
-
             .nav-links a:hover {
                 background-color: #FFF4ED;
                 color: #C4737C;
                 padding-left: 2.2rem;
             }
-
-            /* Close button - now only appears when mobile menu is active via JS */
             .close-menu-btn {
                 display: flex;
                 position: absolute;
@@ -301,13 +293,10 @@
                 justify-content: center;
                 transition: all 0.2s;
             }
-
             .close-menu-btn:hover {
                 background: #F2D7EE;
                 transform: rotate(90deg);
             }
-
-            /* Overlay */
             .menu-overlay {
                 position: fixed;
                 top: 0;
@@ -321,34 +310,28 @@
                 visibility: hidden;
                 transition: all 0.3s ease;
             }
-
             .menu-overlay.active {
                 opacity: 1;
                 visibility: visible;
             }
         }
 
-        /* Extra small devices */
         @media (max-width: 480px) {
             .nav-container {
                 padding: 0.7rem 1.2rem;
             }
-            
             .logo a {
                 font-size: 1.3rem;
             }
-            
             .mobile-menu-btn {
                 width: 38px;
                 height: 38px;
                 font-size: 1.2rem;
             }
-            
             .nav-links {
                 width: 260px;
                 right: -260px;
             }
-            
             .nav-links a {
                 padding: 0.9rem 1.5rem;
                 font-size: 1rem;
@@ -428,7 +411,7 @@
         /* Projects grid */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 1.8rem;
         }
 
@@ -448,8 +431,34 @@
         }
         .project-title {
             font-size: 1.2rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
             font-weight: 700;
+        }
+        .project-tags {
+            margin: 0.6rem 0 1rem 0;
+        }
+        .github-link {
+            margin-top: auto;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #C4737C;
+            text-decoration: none;
+            background: rgba(196,115,124,0.1);
+            padding: 0.4rem 0.9rem;
+            border-radius: 40px;
+            width: fit-content;
+            transition: all 0.2s;
+        }
+        .github-link i {
+            font-size: 0.9rem;
+        }
+        .github-link:hover {
+            background: #C4737C;
+            color: white;
+            transform: translateX(4px);
         }
 
         /* Experience & Education */
@@ -655,6 +664,9 @@
         <div class="container">
             <h2>Featured Projects</h2>
             <div class="projects-grid" id="projectsGrid"></div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="https://github.com/sidraliaqat" target="_blank" class="btn btn-outline"><i class="fab fa-github"></i> Explore all on GitHub</a>
+            </div>
         </div>
     </section>
 
@@ -698,21 +710,42 @@
 </footer>
 
 <script>
+    // Complete list of all projects with GitHub repo links (username-based, you can update individual links if needed)
     const projects = [
-        { title: "Line Following Robot", desc: "Autonomous sensor-based robot using embedded systems.", tags: ["Robotics", "Embedded"], icon: "fa-robot" },
-        { title: "S++ Compiler", desc: "Custom compiler with lexical & syntax analysis.", tags: ["C++", "Compilers"], icon: "fa-code" },
-        { title: "Food Price & Inflation Prediction", desc: "ML-driven data analysis & forecasting model.", tags: ["Python", "ML"], icon: "fa-chart-line" },
-        { title: "Save2Serve – Food Recipe App", desc: "Recipe & expiry recommendation for smart kitchen.", tags: ["React Native"], icon: "fa-utensils" },
-        { title: "4-Floor Elevator Controller", desc: "Verilog FSM design for elevator control.", tags: ["Verilog"], icon: "fa-building" },
-        { title: "Online Doctor Appointment System", desc: "Web-based booking & management platform.", tags: ["PHP", "MySQL"], icon: "fa-calendar-check" },
-        { title: "Weather Application", desc: "Real-time weather info using APIs.", tags: ["JavaScript", "API"], icon: "fa-cloud-sun" },
-        { title: "Smile Detector", desc: "AI face detection using OpenCV.", tags: ["Python", "OpenCV"], icon: "fa-face-smile" }
-    ];
+    { title: "Line Following Robot", desc: "Autonomous sensor-based robot using embedded systems and IR sensors.", tags: ["Robotics", "Embedded", "C"], icon: "fa-robot", gh: "line-following-robot" },
+    { title: "S++ Compiler", desc: "Custom compiler with lexical & syntax analysis for a custom language.", tags: ["C++", "Compilers", "Lexical Analysis"], icon: "fa-code", gh: "s_plus_plus_compiler" },
+    { title: "Food Price & Inflation Prediction", desc: "ML-driven data analysis & price forecasting model using Python.", tags: ["Python", "ML", "Data Science"], icon: "fa-chart-line", gh: "Food-Price-and-Inflation-Prediction" },
+    { title: "Save2Serve – Food Recipe & Expiry Suggester", desc: "Recipe recommendations & expiry tracker for smart kitchen.", tags: ["React Native", "App Dev"], icon: "fa-utensils", gh: "Save2Serve-MobileApp" },
+    { title: "4-Floor Elevator Controller System", desc: "Verilog FSM design for elevator control system.", tags: ["Verilog", "FSM"], icon: "fa-building", gh: "Elevator-Controller-System" },
+    { title: "SidraayyyAura Social App", desc: "Social networking web application with user profiles and posts.", tags: ["Node.js", "JavaScript", "Social"], icon: "fa-hashtag", gh: "social_app" },
+    { title: "SidraayyyManager", desc: "Full stack project management system with task tracking.", tags: ["JavaScript", "Project Management"], icon: "fa-tasks", gh: "project_manager" },
+    { title: "Online Doctor Appointment System", desc: "Web-based booking & management platform for clinics.", tags: ["PHP", "MySQL", "Web"], icon: "fa-calendar-check", gh: "Online-Doctors-Appointment-System" },
+    { title: "Rain & Fire Sensor Alarm System", desc: "Environmental alert system using sensors & buzzers.", tags: ["Arduino", "IoT"], icon: "fa-bell", gh: "DLD_Rain-And-Fire-Sensor-Alarm" },
+    { title: "Online Food Ordering System", desc: "Java database system for restaurant food ordering.", tags: ["Java", "JDBC"], icon: "fa-hamburger", gh: "OOP_DB_Online-Food-Ordering-System" },
+    { title: "Weather Application", desc: "Real-time weather information using REST APIs.", tags: ["Python", "API"], icon: "fa-cloud-sun", gh: "Weather-Application" },
+    { title: "Smile Detector", desc: "AI face detection system using OpenCV & Python.", tags: ["Python", "OpenCV", "AI"], icon: "fa-face-smile", gh: "AI_Smile-Detector" },
+    { title: "Voice Controlled Contact Manager", desc: "Speech-based contact management system.", tags: ["Python", "SpeechRecognition"], icon: "fa-microphone-alt", gh: "AI_Voice-Controlled-Contact-Manager" },
+    { title: "Electricity Bill Generator", desc: "Automated billing system with consumption calculator.", tags: ["C", "System"], icon: "fa-file-invoice-dollar", gh: "PF_Electricity-Bill-Generator" },
+    { title: "Phone Directory System", desc: "C++ contact management tool with search & sort.", tags: ["C++", "Data Structures"], icon: "fa-phone-alt", gh: "DS_Phone-Directory-System" },
+];
+
+    // Helper to generate GitHub project URL (base + repo name)
+    function getGithubLink(repoSlug) {
+        return `https://github.com/sidraliaqat/${repoSlug}`;
+    }
 
     function renderProjects() {
         const grid = document.getElementById('projectsGrid');
         if(grid) {
-            grid.innerHTML = projects.map(proj => `<div class="card"><div class="project-icon"><i class="fas ${proj.icon} fa-2x"></i></div><h3 class="project-title">${proj.title}</h3><p style="font-size:0.9rem; margin: 0.5rem 0;">${proj.desc}</p><div class="project-tags">${proj.tags.map(t => `<span class="badge">${t}</span>`).join('')}</div></div>`).join('');
+            grid.innerHTML = projects.map(proj => `
+                <div class="card">
+                    <div class="project-icon"><i class="fas ${proj.icon} fa-2x"></i></div>
+                    <h3 class="project-title">${proj.title}</h3>
+                    <p style="font-size:0.9rem; margin: 0.4rem 0 0.8rem;">${proj.desc}</p>
+                    <div class="project-tags">${proj.tags.map(t => `<span class="badge">${t}</span>`).join('')}</div>
+                    <a href="${getGithubLink(proj.gh)}" target="_blank" class="github-link"><i class="fab fa-github"></i> View on GitHub →</a>
+                </div>
+            `).join('');
         }
     }
     renderProjects();
